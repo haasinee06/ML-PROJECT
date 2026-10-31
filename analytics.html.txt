@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Placement Prediction Analytics</title>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        margin: 0;
+        padding: 30px;
+        text-align: center;
+    }
+
+    h1 {
+        color: #222;
+        margin-bottom: 20px;
+    }
+
+    .metrics {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 25px;
+        margin: 25px 0 40px 0;
+    }
+
+    .metric-card {
+        background: white;
+        padding: 20px 50px;
+        min-width: 220px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .metric-card h2 {
+        margin: 0;
+        font-size: 32px;
+    }
+
+    .metric-card p {
+        margin-bottom: 0;
+        color: #555;
+    }
+
+    .graph-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 25px;
+        max-width: 1400px;
+        margin: auto;
+    }
+
+    .graph-card {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .graph-card h2 {
+        color: #222;
+        margin-top: 0;
+        font-size: 20px;
+    }
+
+    .graph-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 10px;
+        margin-top: 15px;
+    }
+
+    @media (max-width: 500px) {
+
+        body {
+            padding: 15px;
+        }
+
+        .graph-container {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<h1>Placement Prediction Analytics Dashboard</h1>
+
+
+<div class="metrics">
+
+    <div class="metric-card">
+        <h2>{{ accuracy }}%</h2>
+        <p>Model Accuracy</p>
+    </div>
+
+
+    <div class="metric-card">
+        <h2>{{ auc_score }}</h2>
+        <p>ROC AUC Score</p>
+    </div>
+
+</div>
+
+
+<div class="graph-container">
+
+
+    <!-- Placement Status Distribution -->
+
+    <div class="graph-card">
+
+        <h2>Placement Status Distribution</h2>
+
+        <img
+            src="{{ url_for('static', filename='graphs/status_distribution.png') }}"
+            alt="Placement Status Distribution Graph"
+        >
+
+    </div>
+
+
+
+    <!-- Feature Analysis -->
+
+    <div class="graph-card">
+
+        <h2>Feature Analysis</h2>
+
+        <img
+            src="{{ url_for('static', filename='graphs/feature_analysis.png') }}"
+            alt="Feature Analysis Graph"
+        >
+
+    </div>
+
+
+
+    <!-- Actual vs Predicted -->
+
+    <div class="graph-card">
+
+        <h2>Actual vs Predicted Placement Status</h2>
+
+        <img
+            src="{{ url_for('static', filename='graphs/actual_vs_predicted.png') }}"
+            alt="Actual vs Predicted Placement Status Graph"
+        >
+
+    </div>
+
+
+
+    <!-- ROC Curve -->
+
+    <div class="graph-card">
+
+        <h2>ROC Curve</h2>
+
+        <img
+            src="{{ url_for('static', filename='graphs/roc_curve.png') }}"
+            alt="ROC Curve Graph"
+        >
+
+    </div>
+
+
+</div>
+```
+
+</body>
+
+</html>

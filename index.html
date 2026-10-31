@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Placement Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="mark">P</div>
+    <div class="name">Placement Predictor</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">Campus Placement · ML Prediction</div>
+    <h1>Will this profile get placed?</h1>
+    <p>Enter a student's academic record and test scores below. A trained classification model estimates the placement outcome instantly.</p>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <p class="section-label">Student profile</p>
+      <p class="section-sub">All percentage fields accept values between 0 and 100.</p>
+
+      <form action="/predict" method="POST">
+        <div class="grid">
+          <div class="field">
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender" required>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="workex">Work Experience</label>
+            <select name="workex" id="workex" required>
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="ssc_p">10th (SSC) Percentage</label>
+            <input type="number" step="0.01" min="0" max="100" name="ssc_p" id="ssc_p" placeholder="e.g. 78.5" required>
+          </div>
+
+          <div class="field">
+            <label for="ssc_b">10th Board</label>
+            <select name="ssc_b" id="ssc_b" required>
+              <option value="Central">Central</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="hsc_p">12th (HSC) Percentage</label>
+            <input type="number" step="0.01" min="0" max="100" name="hsc_p" id="hsc_p" placeholder="e.g. 72.0" required>
+          </div>
+
+          <div class="field">
+            <label for="hsc_b">12th Board</label>
+            <select name="hsc_b" id="hsc_b" required>
+              <option value="Central">Central</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="hsc_s">12th Stream</label>
+            <select name="hsc_s" id="hsc_s" required>
+              <option value="Science">Science</option>
+              <option value="Commerce">Commerce</option>
+              <option value="Arts">Arts</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="degree_t">Degree Type</label>
+            <select name="degree_t" id="degree_t" required>
+              <option value="Sci&Tech">Science & Tech</option>
+              <option value="Comm&Mgmt">Commerce & Management</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="degree_p">Degree Percentage</label>
+            <input type="number" step="0.01" min="0" max="100" name="degree_p" id="degree_p" placeholder="e.g. 68.0" required>
+          </div>
+
+          <div class="field">
+            <label for="etest_p">Employability Test %</label>
+            <input type="number" step="0.01" min="0" max="100" name="etest_p" id="etest_p" placeholder="e.g. 75.0" required>
+          </div>
+
+          <div class="field">
+            <label for="specialisation">MBA Specialisation</label>
+            <select name="specialisation" id="specialisation" required>
+              <option value="Mkt&HR">Marketing & HR</option>
+              <option value="Mkt&Fin">Marketing & Finance</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="mba_p">MBA Percentage</label>
+            <input type="number" step="0.01" min="0" max="100" name="mba_p" id="mba_p" placeholder="e.g. 61.0" required>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="submit-row">
+          <button type="submit" class="predict-btn">Predict Placement</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>Trained on academic + test-score features · Logistic Regression classifier</footer>
+</body>
+</html>

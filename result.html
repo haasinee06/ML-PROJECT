@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="mark">P</div>
+    <div class="name">Placement Predictor</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">Prediction Result</div>
+    <h1>{{ "Likely to be placed" if placed else "Placement looks unlikely" }}</h1>
+    <p>Based on the academic profile you entered, here's what the model predicts.</p>
+  </div>
+
+  <div class="container">
+    <div class="card result-wrap">
+      <div class="badge {{ 'placed' if placed else 'not-placed' }}">
+        {{ "✅ Placed" if placed else "❌ Not Placed" }}
+      </div>
+
+      <p class="confidence-label">Model confidence</p>
+      <div class="meter">
+        <div class="meter-fill" style="width: {{ confidence }}%;"></div>
+      </div>
+      <div class="confidence-value">{{ confidence }}%</div>
+
+      <a href="/" class="back-link">← Try another profile</a>
+    </div>
+  </div>
+
+  <footer>This is a course project prediction, not real placement guidance.</footer>
+</body>
+</html>
